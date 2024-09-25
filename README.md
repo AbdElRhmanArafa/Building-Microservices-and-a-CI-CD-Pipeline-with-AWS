@@ -120,16 +120,8 @@ This project will redesign the application using microservices hosted on AWS. By
         ```bash
         aws ecs create-service --servic-name `<name>` --cli-input-json "$(cat <PATH_TO_SERVICE_DEFINITION>)"
         ```
-    - ![Listeners and Rules](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/9fc2824e1a104239f49eb433da84f12c03d8b0## Task Documentation
+    - ![Listensers and Rules](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/9fc2824e1a104239f49eb433da84f12c03d8b0d3/Docs/Listeners%20and%20rules.png)
 
-You can find the task details in the following PDF:
-
-[Download Task PDF](https://github.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/raw/main/Docs/Task.pdf)
-    - ![Listensers and Rules](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/9fc2824e1a104239f49eb433da84f12c03d8b0d3/Docs/## Task Documentation
-
-You can find the task details in the following PDF:
-
-[Download Task PDF](https://github.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/raw/main/Docs/Task.pdf))d3/Docs/Listeners%20and%20rules.png)
 
 13. Create a CodePipeline for each microservice.
  - Pipeline specifications:
