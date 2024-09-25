@@ -159,9 +159,3 @@ This project requires a pre-prepared **RDS Endpoint In AWS**. Please ensure that
 You can find the task details in the following PDF:
 
 [Download Task PDF](https://github.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/raw/main/Docs/Task.pdf)
-
-## Task Documentation
-
-You can find the task details in the following PDF:
-
-[Download Task PDF](https://github.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/raw/main/Docs/Task.pdf)
