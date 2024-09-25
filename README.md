@@ -1,7 +1,9 @@
 # Microservice Project: Docker + AWS ECR + ECS
 
 ## Description
-This project demonstrates the use of Docker to containerize a microservice and deploy it to AWS using ECS and ECR. and using codepipeline to automate the deployment process.
+The "Building Microservices and a CI/CD Pipeline with AWS" project aims to solve challenges faced by a café corporation that needs to source high-quality coffee beans for its franchises. The current application, which lists coffee suppliers, is built as a monolithic system that struggles with reliability and performance.
+
+This project will redesign the application using microservices hosted on AWS. By breaking the monolith into smaller, independent services, the café can improve scalability and resilience, ensuring that issues with one service won’t impact the entire system. Additionally, we will implement a Continuous Integration and Continuous Development (CI/CD) pipeline to automate updates and enhance deployment efficiency. This approach will help the café better meet customer demands and streamline operations.
 
 ## Prerequisites
 - AWS Account
@@ -57,6 +59,7 @@ This project demonstrates the use of Docker to containerize a microservice and d
         --capacity-providers FARGATE \
         --region us-east-1
         ```
+    - ![ECS Cluster](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/9fc2824e1a104239f49eb433da84f12c03d8b0d3/Docs/serverlesscluster-created.png)
 8. Create a task definition for each microservice.
     - Navigate to the `.aws` directory and create a task definition for each microservice.
     - Run the following command to create the task definition.
@@ -67,6 +70,8 @@ This project demonstrates the use of Docker to containerize a microservice and d
         ```bash
         awslogs-create-group: true: # This means that the log group awslogs-capstone will be automatically created if it doesn't exist
         ```
+    - ![Task Definitions](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/9fc2824e1a104239f49eb433da84f12c03d8b0d3/Docs/Task%20definitions.png)
+
 ### Edit the taskdef-customer.json file After Creating the Task Definition
 
 1. Modify line 5 to match the following:
@@ -91,6 +96,7 @@ This project demonstrates the use of Docker to containerize a microservice and d
         --health-check-protocol HTTP \
         --health-check-path / 
         ```
+    - ![Target Groups](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/9fc2824e1a104239f49eb433da84f12c03d8b0d3/Docs/Target%20groups.png)
 11. Create a load balancer and securty group.
     - Create a new EC2 security group named `<Name-sg>` to use in `same vpc that you used in target group`.
     - Add inbound rules that allow TCP traffic from any IPv4 address on ports 80 and 8080.
@@ -114,6 +120,17 @@ This project demonstrates the use of Docker to containerize a microservice and d
         ```bash
         aws ecs create-service --servic-name `<name>` --cli-input-json "$(cat <PATH_TO_SERVICE_DEFINITION>)"
         ```
+    - ![Listeners and Rules](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/9fc2824e1a104239f49eb433da84f12c03d8b0## Task Documentation
+
+You can find the task details in the following PDF:
+
+[Download Task PDF](https://github.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/raw/main/Docs/Task.pdf)
+    - ![Listensers and Rules](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/9fc2824e1a104239f49eb433da84f12c03d8b0d3/Docs/## Task Documentation
+
+You can find the task details in the following PDF:
+
+[Download Task PDF](https://github.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/raw/main/Docs/Task.pdf))d3/Docs/Listeners%20and%20rules.png)
+
 13. Create a CodePipeline for each microservice.
  - Pipeline specifications:
     - **Pipeline name**: `update-employee-microservice`
@@ -133,3 +150,19 @@ This project demonstrates the use of Docker to containerize a microservice and d
     - Under **Dynamically update task definition image**, for **Input artifact with image details**, choose `image-employee`.
     - For **Placeholder text in the task definition**, enter `IMAGE1_NAME`
 
+## ⚠️ Warning
+
+This project requires a pre-prepared **RDS Endpoint In AWS**. Please ensure that you have an RDS instance up and running with the necessary configurations before attempting to use or deploy this project. The application relies on the database connection provided by the RDS Endpoint for proper functionality.
+
+## Task Documentation
+
+You can find the task details in the following PDF:
+
+[Download Task PDF](https://github.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/raw/main/Docs/Task.pdf)
+
+## Task Documentation
+
+You can find the task details in the following PDF:
+
+[Download Task PDF](https://github.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/raw/main/Docs/Task.pdf)
+    - ![Target Groups](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/9fc2824e1a104239f49eb433da84f12c03d8b0d3/Docs/Target%20groups.png)
