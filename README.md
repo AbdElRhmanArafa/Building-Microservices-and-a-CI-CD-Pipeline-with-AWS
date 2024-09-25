@@ -165,4 +165,3 @@ You can find the task details in the following PDF:
 You can find the task details in the following PDF:
 
 [Download Task PDF](https://github.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/raw/main/Docs/Task.pdf)
-    - ![Target Groups](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/9fc2824e1a104239f49eb433da84f12c03d8b0d3/Docs/Target%20groups.png)
