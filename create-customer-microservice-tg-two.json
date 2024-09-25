@@ -1,9 +1,9 @@
 {
-    "taskDefinition": "customer-microservice:3",
+    "taskDefinition": "customer-microservice:5",
     "cluster": "microservices-serverlesscluster",
     "loadBalancers": [
         {
-            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:659722163210:targetgroup/customer-tg-two/883c569d41d14e75",
+            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:659722163210:targetgroup/customer-tg-two/3dec808bc6df8ff0",
             "containerName": "customer",
             "containerPort": 8080
         }
@@ -17,11 +17,11 @@
     "networkConfiguration": {
         "awsvpcConfiguration": {
             "subnets": [
-                "subnet-0388c842f1bb1d216",
-                "subnet-07f61238d1d3f1ffb"
+                "subnet-01275bb7ea672f1a4",
+                "subnet-0694f0f62064c68d3"
             ],
             "securityGroups": [
-                "sg-053a5ede2ea023125"
+                "sg-0b98f8aafdb985ef7"
             ],
             "assignPublicIp": "ENABLED"
         }

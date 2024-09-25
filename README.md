@@ -48,7 +48,7 @@ This project demonstrates the use of Docker to containerize a microservice and d
         ```bash
         docker push <aws-account-id>.dkr.ecr.<region>.amazonaws.com/<repository-name>:<tag>
         ```
-    - [understanding-docker](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/44ab769a3010edc6a9db4ea0b67d4f8529255800/Docs/Architecture%20diagram.png)
+    - ![Understanding Docker](https://raw.githubusercontent.com/AbdElRhmanArafa/Building-Microservices-and-a-CI-CD-Pipeline-with-AWS/715a755ab3196759fc217a3a9e214e5529e1a91b/Docs/understanding-docker.png)
 7. Create an ECS cluster
     - Run the following command to create the ECS cluster.
         ```bash
@@ -67,4 +67,52 @@ This project demonstrates the use of Docker to containerize a microservice and d
         ```bash
         awslogs-create-group: true: # This means that the log group awslogs-capstone will be automatically created if it doesn't exist
         ```
+### Edit the taskdef-customer.json file After Creating the Task Definition
+
+1. Modify line 5 to match the following:
+    ```json
+    "image": "<IMAGE1_NAME>",
+    ```
+**Analysis**: `<IMAGE1_NAME>` is a placeholder and not a valid image name, which is why you initially set the image name to `customer` when registering the first revision with Amazon ECS. Later in the project, `CodePipeline` will dynamically update the correct image name at runtime.
+
+
+9. Create an AppSpec file for each microservice.
+     > **Important**: DON'T modify `<TASK_DEFINITION>`. This setting will be updated automatically when the pipeline runs.
+
+10. Create a target group for each microservice.
+    - Run the following command to create the target group.
+        ```bash
+        aws elbv2 create-target-group \
+        --name <target-group-name> \
+        --protocol HTTP \
+        --port 80 \
+        --target-type ip \
+        --vpc-id <vpc-id> \
+        --health-check-protocol HTTP \
+        --health-check-path / 
+        ```
+11. Create a load balancer and securty group.
+    - Create a new EC2 security group named `<Name-sg>` to use in `same vpc that you used in target group`.
+    - Add inbound rules that allow TCP traffic from any IPv4 address on ports 80 and 8080.
+    - In the Amazon EC2 console, create an Application Load Balancer named <Name-LB>
+    - Use the same VPC and two public subnets.
+    - Configure two listeners on it. The first should listen on HTTP:80 and forward traffic to customer-tg-two by default. 
+    - The second should listen on HTTP:8080 and forward traffic to customer-tg-one by default.
+    - Add new rules to the target group to route traffic to the correct target group based on the path. if IF Path is `/admin/*` THEN Forward to employee-tg-<>.
+12. Creating two Amazon ECS services
+    - Create two services in the ECS cluster, one for each microservice.
+    - make sure you have the correct values for the following fields `By replacing it from sevice file.json`:
+        - `cluster`
+        - `service-name`
+        - `task-definition`
+        - `load-balancers`
+        - `target-group-arn`
+        - `public-subnets`
+        - `security-groups`
+    - Run the following command to create the service.
+        ```bash
+        aws ecs create-service --cli-input-json "$(cat <PATH_TO_SERVICE_DEFINITION>)"
+        ```
+
+
 
