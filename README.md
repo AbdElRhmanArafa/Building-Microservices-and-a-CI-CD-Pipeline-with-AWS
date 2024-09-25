@@ -114,6 +114,22 @@ This project demonstrates the use of Docker to containerize a microservice and d
         ```bash
         aws ecs create-service --servic-name `<name>` --cli-input-json "$(cat <PATH_TO_SERVICE_DEFINITION>)"
         ```
-
-
+13. Create a CodePipeline for each microservice.
+ - Pipeline specifications:
+    - **Pipeline name**: `update-employee-microservice`
+    - **Role ARN**: `PipelineRole`
+    - **Source provider**: `GitHub (Version 1)`
+    - **Repository name**: `deployment`
+    - **Branch name**: `dev`
+    - **Deploy provider**: `Amazon ECS (Blue/Green)`
+    - **AWS CodeDeploy application name**: `microservices`
+    - **AWS CodeDeploy deployment group**: `microservices-employee`
+    - **Amazon ECS task definition**: `SourceArtifact`
+    - **Path**: `taskdef-employee.json`
+    - **AWS CodeDeploy AppSpec file**: `SourceArtifact`
+    - **Path**: `appspec-employee.yaml`
+ - Add action:
+    - Add another input artifact and choose `image-employee`.
+    - Under **Dynamically update task definition image**, for **Input artifact with image details**, choose `image-employee`.
+    - For **Placeholder text in the task definition**, enter `IMAGE1_NAME`
 
