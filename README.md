@@ -110,8 +110,9 @@ This project demonstrates the use of Docker to containerize a microservice and d
         - `public-subnets`
         - `security-groups`
     - Run the following command to create the service.
+        - make sure that all traget groups associated with the load balancer.
         ```bash
-        aws ecs create-service --cli-input-json "$(cat <PATH_TO_SERVICE_DEFINITION>)"
+        aws ecs create-service --servic-name `<name>` --cli-input-json "$(cat <PATH_TO_SERVICE_DEFINITION>)"
         ```
 
 
