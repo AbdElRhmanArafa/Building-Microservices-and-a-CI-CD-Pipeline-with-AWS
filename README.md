@@ -15,7 +15,7 @@ This project will redesign the application using microservices hosted on AWS. By
 ## Setup and Installation
 1. Create a cloud9 environment in your AWS account for development user.
     - choose the environment type as `EC2` and the instance type as `t2.micro` and  Network settings as `ssh` in `public subnet`.
-2. Clone the repository to your cloud9 environment.
+2. Clone the repository to your cloud9 environment and check out commit 4.
     ```bash
     git clone https://github.com/AbdElRhmanArafa/microservices-pop-Cafe.git
     ```
